@@ -1,0 +1,10 @@
+{
+	"name": "mattkirwan/helix",
+	"description": "Helix - create data driven sites with ease.",
+	"require": {
+		"silex/silex": "1.2.*@dev"
+	},
+	"autoload": {
+		"psr-4": {"Helix\\": "src/Helix"}
+	}
+}
