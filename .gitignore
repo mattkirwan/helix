@@ -2,3 +2,4 @@
 vagrant/
 Vagrantfile
 logs/
+helix/vendor/
