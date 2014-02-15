@@ -3,19 +3,28 @@
 namespace Helix\Converter;
 
 use Helix\HelixEndpoint;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class EndpointConverter
 {
-	private $endpoint;
+	public $helixEndpoint;
 
-	public function __construct(HelixEndpoint $endpoint)
+	public function __construct(HelixEndpoint $helixEndpoint)
 	{
-		$this->endpoint = $endpoint;
+		$this->helixEndpoint = $helixEndpoint;
 	}
 
-	public function convert($rawEndpointString)
+	public function convert($endpoint)
 	{
-		$this->endpoint->setRawEndpointString($rawEndpointString);
-		return $this->endpoint;
+		$endpoint = filter_var($endpoint, FILTER_SANITIZE_STRING);
+
+		$this->helixEndpoint->setSlug($endpoint);
+
+		if(null === $this->helixEndpoint->loadEndpointModel())
+		{
+			throw new NotFoundHttpException('Page does not exist.', null, 404);
+		}
+
+		return $this->helixEndpoint;
 	}
 }

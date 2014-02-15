@@ -2,7 +2,9 @@
 	"name": "mattkirwan/helix",
 	"description": "Helix - create data driven sites with ease.",
 	"require": {
-		"silex/silex": "1.2.*@dev"
+		"silex/silex": "1.2.*@dev",
+		"illuminate/database": "v4.1.21",
+		"twig/twig": "v1.15.1"
 	},
 	"autoload": {
 		"psr-4": {"Helix\\": "src/Helix"}
